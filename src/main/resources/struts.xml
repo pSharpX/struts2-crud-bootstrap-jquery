@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>    
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.custom.i18n.resources" value="global" />
+    
+    <package name="default" extends="struts-default">               
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+        
+        <interceptors>  
+            <interceptor class="pe.edu.cibertec.interceptor.LoginInterceptor" name="loginInterceptor">  
+            </interceptor>  
+            <interceptor-stack name="loginStack">  
+                <!--<interceptor-ref name="loginInterceptor" />-->
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="loginStack"></default-interceptor-ref>
+        
+        <global-results>
+            <result name="login">/seguridad/login.jsp</result>
+            <result name="login-redirect" type="redirect">/seguridad/login.jsp</result>
+            <result type="tiles" name="login-success">d_principal</result>
+        </global-results>
+                
+        <action name="default" class="pe.edu.cibertec.action.UsuarioAction" method="execute">
+            <result>/seguridad/login.jsp</result>           
+        </action>
+        <action name="login" class="pe.edu.cibertec.action.UsuarioAction" method="login">
+            <!--<result>principal.jsp</result>-->
+            <!--<result type="tiles">d_principal</result>-->
+            <result type="redirectAction">
+                <param name="actionName">inicio</param>
+            </result>
+            <result name="login">/seguridad/login.jsp</result>
+            <result name="input">/seguridad/login.jsp</result>
+        </action>        
+        <action name="logout" class="pe.edu.cibertec.action.UsuarioAction" method="logout">
+            <result name="login" type="redirectAction">
+                <param name="actionName">login</param>
+            </result>
+        </action>
+        <action name="inicio" class="pe.edu.cibertec.action.ClienteAction" method="inicio">
+            <!--<interceptor-ref name="loginStack"></interceptor-ref>-->
+            <!--<result>principal.jsp</result>-->
+            <result type="tiles">d_principal</result>
+            <result name="login">/seguridad/login.jsp</result>
+        </action>
+        <action name="listarCliente" class="pe.edu.cibertec.action.ClienteAction" method="listar">
+            <interceptor-ref name="loginStack"></interceptor-ref>
+            <!--<result>/clientes/listar.jsp</result>-->
+            <result type="tiles">d_listarCliente</result>
+        </action>
+        <action name="detalleCliente" class="pe.edu.cibertec.action.ClienteAction" method="mostrar">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <!--<result>/clientes/detalle.jsp</result>-->
+            <result type="tiles">d_detalleCliente</result>
+        </action>
+        <action name="inicializarCliente" class="pe.edu.cibertec.action.ClienteAction" method="inicializar">
+            <interceptor-ref name="loginStack"></interceptor-ref>
+            <!--<result>/clientes/nuevo.jsp</result>-->
+            <result type="tiles">d_nuevoCliente</result>
+        </action>
+        <action name="registrarCliente" class="pe.edu.cibertec.action.ClienteAction" method="registrar">
+            <interceptor-ref name="loginStack"></interceptor-ref>
+            <!--<result>/clientes/resultado.jsp</result>
+            <result name="input">/clientes/nuevo.jsp</result>-->
+            <result type="tiles">d_resultadoCliente</result>
+            <result name="input" type="tiles">d_nuevoCliente</result>
+        </action>
+        <action name="editarCliente" class="pe.edu.cibertec.action.ClienteAction" method="editar">
+            <interceptor-ref name="loginStack"></interceptor-ref>
+            <!--<result>/clientes/resultado.jsp</result>
+            <result name="input">/clientes/editar.jsp</result>-->
+            <result type="tiles">d_editarCliente</result>
+            <result name="input" type="tiles">d_editarCliente</result>
+        </action>
+        <action name="eliminarCliente" class="pe.edu.cibertec.action.ClienteAction" method="eliminar">
+            <interceptor-ref name="loginStack"></interceptor-ref>
+            <!--<result>/clientes/resultado.jsp</result>
+            <result name="input">/clientes/eliminar.jsp</result>-->
+            <result type="tiles">d_eliminarCliente</result>
+            <result name="input" type="tiles">d_eliminarCliente</result>
+        </action>
+    </package>    
+</struts>

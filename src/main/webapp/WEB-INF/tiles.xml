@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="d_principal" template="/plantillas/plantilla01.jsp">
+        <put-attribute name="cabecera"  value="/comun/cabecera.jsp"/>
+        <put-attribute name="menu" value="/comun/menu.jsp"/>
+        <put-attribute name="cuerpo"   value="/principal.jsp"/>
+        <put-attribute name="pie"   value="/comun/pie.jsp"/>
+    </definition>
+    
+    <definition name="d_listarCliente" extends="d_principal">
+        <put-attribute name="cuerpo"  value="/clientes/listar.jsp"/>        
+    </definition>
+    
+    <definition name="d_editarCliente" extends="d_principal">
+        <put-attribute name="cuerpo"  value="/clientes/editar.jsp"/>
+    </definition>
+    
+    <definition name="d_detalleCliente" extends="d_principal">
+        <put-attribute name="cuerpo"  value="/clientes/detalle.jsp"/>        
+    </definition>
+    
+    <definition name="d_nuevoCliente" extends="d_principal">
+        <put-attribute name="cuerpo"  value="/clientes/nuevo.jsp"/>        
+    </definition>
+    
+    <definition name="d_resultadoCliente" extends="d_principal">
+        <put-attribute name="cuerpo"  value="/clientes/resultado.jsp"/>        
+    </definition>
+  
+    <definition name="d_eliminarCliente" extends="d_principal">
+        <put-attribute name="cuerpo"  value="/clientes/eliminar.jsp"/>
+    </definition>
+</tiles-definitions>

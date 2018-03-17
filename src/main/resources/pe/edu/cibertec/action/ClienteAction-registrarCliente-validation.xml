@@ -1,0 +1,33 @@
+<!DOCTYPE validators PUBLIC
+"-//Apache Struts//XWork Validator 1.0.2//EN"
+"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="cliente.nombre">
+        <field-validator type="requiredstring">
+            <message>Campo Requerido</message>
+        </field-validator>
+    </field>
+    
+    <field name="cliente.apellido">
+        <field-validator type="requiredstring">
+            <message>Campo Requerido</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="maxLength">25</param>
+            <message>Ingresar máximo %{maxLength} caracteres</message>
+        </field-validator>
+    </field>
+    
+    <field name="cliente.numeroMovil">
+        <field-validator type="regex">
+            <param name="regex">[0-9]*</param>
+            <message>Solo ingresar numeros</message>
+        </field-validator>
+    </field>
+    
+    <field name="cliente.correo">
+        <field-validator type="email">
+            <message>Formato Incorrecto</message>
+        </field-validator>
+    </field>    
+</validators>

@@ -1,0 +1,20 @@
+<!DOCTYPE validators PUBLIC
+"-//Apache Struts//XWork Validator 1.0.2//EN"
+"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="usuario.username">
+        <field-validator type="requiredstring">
+            <message>Campo Requerido</message>
+        </field-validator>
+    </field>
+    
+    <field name="usuario.password">
+        <field-validator type="requiredstring">
+            <message>Campo Requerido</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="maxLength">25</param>
+            <message>Ingresar máximo %{maxLength} caracteres</message>
+        </field-validator>
+    </field>    
+</validators>
