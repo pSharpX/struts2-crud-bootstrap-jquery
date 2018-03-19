@@ -18,7 +18,7 @@
                 <h1><s:text name="titulo.principal" /></h1>
                 <p><s:text name="titulo.bienvenida" /></p>
                 <s:url action="inicializarCliente" id="newCliente"></s:url>
-                <s:a href="%{newCliente}" cssClass="btn btn-primary">Nuevo Cliente <span class="glyphicon glyphicon-plus"></span></s:a>
+                <s:a href="%{newCliente}" cssClass="btn btn-primary"><s:text name="formulario.titulo.nuevo" /> <span class="glyphicon glyphicon-plus"></span></s:a>
             </div>
         </div>
     </body>

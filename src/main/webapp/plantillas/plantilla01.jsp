@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <ol class="breadcrumb">
                         <s:url action="inicio" id="inicio"/>
-                        <li><s:a href="%{inicio}">Inicio</s:a></li>                        
+                        <li><s:a href="%{inicio}"><s:text name="navegacion.inicio" /></s:a></li>                        
                     </ol>
                 </div>
             </div>
