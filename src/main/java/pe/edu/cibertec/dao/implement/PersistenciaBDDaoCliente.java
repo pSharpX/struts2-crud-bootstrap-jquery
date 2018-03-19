@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Named;
+
 import pe.edu.cibertec.dao.DaoCliente;
 import pe.edu.cibertec.model.Cliente;
 import pe.edu.cibertec.util.SqlConecta;
@@ -20,6 +23,7 @@ import pe.edu.cibertec.util.SqlConecta;
  *
  * @author DENNYZ
  */
+@Named("mysqlDaoCliente")
 public class PersistenciaBDDaoCliente implements DaoCliente {
 
     private final SqlConecta conecta;

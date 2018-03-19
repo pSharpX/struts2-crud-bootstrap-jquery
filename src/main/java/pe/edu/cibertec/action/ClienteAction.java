@@ -10,9 +10,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
-import pe.edu.cibertec.dao.implement.PersistenciaBDDaoCliente;
+
+import pe.edu.cibertec.dao.DaoCliente;
 import pe.edu.cibertec.model.Cliente;
 
 /**
@@ -24,8 +28,20 @@ public class ClienteAction extends ActionSupport {
     private Cliente clienteSeleccionado;
     private Cliente clienteEditar;
     private Cliente clienteEliminar;
+    
+    @Inject
+    @Named("mockDaoCliente")
+    private DaoCliente daoImpl;
 
-    public Cliente getClienteEditar() {
+    public DaoCliente getDaoImpl() {
+		return daoImpl;
+	}
+
+	public void setDaoImpl(DaoCliente daoImpl) {
+		this.daoImpl = daoImpl;
+	}
+
+	public Cliente getClienteEditar() {
         return clienteEditar;
     }
 
@@ -48,8 +64,7 @@ public class ClienteAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String listar() throws Exception {
-        PersistenciaBDDaoCliente daoImpl = new PersistenciaBDDaoCliente();
+    public String listar() throws Exception {        
         this.clientes = daoImpl.listarCliente();
         return SUCCESS;
     }
@@ -68,8 +83,7 @@ public class ClienteAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String registrar() throws Exception{
-        PersistenciaBDDaoCliente daoImpl = new PersistenciaBDDaoCliente();
+    public String registrar() throws Exception{        
         String errorMessage = daoImpl.insertarCliente(this.cliente);
         if(errorMessage != null && !("".equals(errorMessage))){
             return ERROR;
@@ -79,8 +93,7 @@ public class ClienteAction extends ActionSupport {
     
     public String mostrar() throws Exception {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        int clienteCodigo = Integer.parseInt(request. getParameter("idCliente"));
-        PersistenciaBDDaoCliente daoImpl = new PersistenciaBDDaoCliente();
+        int clienteCodigo = Integer.parseInt(request. getParameter("idCliente"));        
         this.clienteSeleccionado = daoImpl.obtenerCliente(clienteCodigo);
         return SUCCESS;
     }
@@ -89,8 +102,7 @@ public class ClienteAction extends ActionSupport {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         String idCliente = request.getParameter("idCliente");
         if(idCliente != null && !"".equals(idCliente)){
-            int clienteCodigo = Integer.parseInt(idCliente);
-            PersistenciaBDDaoCliente daoImpl = new PersistenciaBDDaoCliente();
+            int clienteCodigo = Integer.parseInt(idCliente);            
             this.clienteEditar = daoImpl.obtenerCliente(clienteCodigo);
         }        
         return SUCCESS;
@@ -101,12 +113,10 @@ public class ClienteAction extends ActionSupport {
         String idCliente = request.getParameter("idCliente");
         String delete = request.getParameter("delete");
         if((idCliente != null && !"".equals(idCliente)) && (delete != null)){
-            int clienteCodigo = Integer.parseInt(idCliente);
-            PersistenciaBDDaoCliente daoImpl = new PersistenciaBDDaoCliente();
+            int clienteCodigo = Integer.parseInt(idCliente);            
             daoImpl.eliminarCliente(clienteCodigo);
         }else if(idCliente != null && !"".equals(idCliente)){
-            int clienteCodigo = Integer.parseInt(idCliente);
-            PersistenciaBDDaoCliente daoImpl = new PersistenciaBDDaoCliente();
+            int clienteCodigo = Integer.parseInt(idCliente);            
             this.clienteEliminar = daoImpl.obtenerCliente(clienteCodigo);
         }
         return SUCCESS;
