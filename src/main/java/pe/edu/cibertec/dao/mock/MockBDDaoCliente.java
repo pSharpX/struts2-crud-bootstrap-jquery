@@ -45,7 +45,10 @@ public class MockBDDaoCliente implements DaoCliente {
 	@Override
 	public Cliente obtenerCliente(Integer idCliente) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ClienteBuilder().addCodigo(1).addNombre(String.format("Nombre 1"))
+				.addApellido(String.format("Apellido 1")).addGenero('M').addCorreo(String.format("correo1@gmail.com"))
+				.addNumeroMovil(String.format("97261571")).addOperadorMovil(String.format("Operador 1"))
+				.addProfesion(String.format("Profesion 1")).addPublicidad(true).build();
 	}
 
 	@Override
