@@ -54,7 +54,7 @@
             <interceptor-ref name="loginStack"></interceptor-ref>
             <!--<result>/clientes/listar.jsp</result>-->
             <result type="tiles">d_listarCliente</result>
-        </action>
+        </action>        
         <action name="detalleCliente" class="pe.edu.cibertec.action.ClienteAction" method="mostrar">
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <!--<result>/clientes/detalle.jsp</result>-->
@@ -73,12 +73,19 @@
             <result name="input" type="tiles">d_nuevoCliente</result>
         </action>
         <action name="editarCliente" class="pe.edu.cibertec.action.ClienteAction" method="editar">
-            <interceptor-ref name="loginStack"></interceptor-ref>
+            <!-- <interceptor-ref name="loginStack"></interceptor-ref> -->
             <!--<result>/clientes/resultado.jsp</result>
             <result name="input">/clientes/editar.jsp</result>-->
             <result type="tiles">d_editarCliente</result>
-            <result name="input" type="tiles">d_editarCliente</result>
+            <!-- <result name="input" type="tiles">d_editarCliente</result> -->
         </action>
+        <action name="actualizarCliente" class="pe.edu.cibertec.action.ClienteAction" method="actualizar">
+            <!-- <interceptor-ref name="loginStack"></interceptor-ref> -->
+            <!--<result>/clientes/resultado.jsp</result>
+            <result name="input">/clientes/editar.jsp</result>-->
+            <result type="tiles">d_resultadoCliente</result>
+            <result name="input" type="tiles">d_editarCliente</result>
+        </action>        
         <action name="eliminarCliente" class="pe.edu.cibertec.action.ClienteAction" method="eliminar">
             <interceptor-ref name="loginStack"></interceptor-ref>
             <!--<result>/clientes/resultado.jsp</result>

@@ -4,7 +4,9 @@
 <s:url action="logout" id="salir"/>
 <s:url action="inicializarCliente" id="crearCliente"/>
 <s:url action="listarCliente" id="listarCliente"/>
-<s:url action="editarCliente" id="editarCliente"/>
+<s:url action="editarCliente" id="editarCliente">
+ <s:param name="idCliente" value="-1" />
+</s:url>
 <s:url action="eliminarCliente" id="eliminarCliente"/>
 <div class="list-group">
     <s:a href="%{salir}" cssClass="list-group-item"><span class="glyphicon glyphicon-log-out"></span> <s:text name="enlace.logout"/></s:a>

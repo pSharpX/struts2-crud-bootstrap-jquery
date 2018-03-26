@@ -24,48 +24,38 @@ import pe.edu.cibertec.model.Cliente;
  * @author JAdv-LM
  */
 public class ClienteAction extends ActionSupport {
-    private Cliente cliente;
-    private Cliente clienteSeleccionado;
-    private Cliente clienteEditar;
-    private Cliente clienteEliminar;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Cliente cliente;
+    private Cliente clienteSeleccionado;    
     
     @Inject
     @Named("mockDaoCliente")
-    private DaoCliente daoImpl;
+    private DaoCliente dao;
 
     public DaoCliente getDaoImpl() {
-		return daoImpl;
+		return dao;
 	}
 
 	public void setDaoImpl(DaoCliente daoImpl) {
-		this.daoImpl = daoImpl;
+		this.dao = daoImpl;
 	}
-
-	public Cliente getClienteEditar() {
-        return clienteEditar;
-    }
-
-    public void setClienteEditar(Cliente clienteEditar) {
-        this.clienteEditar = clienteEditar;
-    }
-
-    public Cliente getClienteEliminar() {
-        return clienteEliminar;
-    }
-
-    public void setClienteEliminar(Cliente clienteEliminar) {
-        this.clienteEliminar = clienteEliminar;
-    }
-    
+   
     private List<Cliente> clientes;
     private Map operadores;
+    
+    public String execute() throws Exception{
+    	return SUCCESS;
+    }
     
     public String inicio() throws Exception {
         return SUCCESS;
     }
     
     public String listar() throws Exception {        
-        this.clientes = daoImpl.listarCliente();
+        this.clientes = dao.listarCliente();
         return SUCCESS;
     }
     
@@ -84,7 +74,7 @@ public class ClienteAction extends ActionSupport {
     }
     
     public String registrar() throws Exception{        
-        String errorMessage = daoImpl.insertarCliente(this.cliente);
+        String errorMessage = dao.insertarCliente(this.cliente);
         if(errorMessage != null && !("".equals(errorMessage))){
             return ERROR;
         }
@@ -93,32 +83,42 @@ public class ClienteAction extends ActionSupport {
     
     public String mostrar() throws Exception {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        int clienteCodigo = Integer.parseInt(request. getParameter("idCliente"));        
-        this.clienteSeleccionado = daoImpl.obtenerCliente(clienteCodigo);
+        int clienteCodigo = Integer.parseInt(request. getParameter("idClienteDetalle"));        
+        this.clienteSeleccionado = dao.obtenerCliente(clienteCodigo);
         return SUCCESS;
     }
 
     public String editar() throws Exception {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        String idCliente = request.getParameter("idCliente");
+        String idCliente = request.getParameter("idClienteEditar");
         if(idCliente != null && !"".equals(idCliente)){
             int clienteCodigo = Integer.parseInt(idCliente);            
-            this.clienteEditar = daoImpl.obtenerCliente(clienteCodigo);
-        }        
+            this.clienteSeleccionado = dao.obtenerCliente(clienteCodigo);
+        }
         return SUCCESS;
+    }
+    
+    public String actualizar() throws Exception {
+    	if(clienteSeleccionado == null)
+    		return INPUT;    	
+    	String errorMessage = dao.modificarCliente(clienteSeleccionado);
+    	 if(errorMessage != null && !("".equals(errorMessage))){
+             return ERROR;
+         }
+    	return SUCCESS;
     }
     
     public String eliminar() throws Exception {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        String idCliente = request.getParameter("idCliente");
-        String delete = request.getParameter("delete");
+        String idCliente = request.getParameter("idClienteEliminar");
+        /*String delete = request.getParameter("delete");
         if((idCliente != null && !"".equals(idCliente)) && (delete != null)){
             int clienteCodigo = Integer.parseInt(idCliente);            
-            daoImpl.eliminarCliente(clienteCodigo);
+            dao.eliminarCliente(clienteCodigo);
         }else if(idCliente != null && !"".equals(idCliente)){
             int clienteCodigo = Integer.parseInt(idCliente);            
-            this.clienteEliminar = daoImpl.obtenerCliente(clienteCodigo);
-        }
+            this.clienteEliminar = dao.obtenerCliente(clienteCodigo);
+        }*/
         return SUCCESS;
     }
     

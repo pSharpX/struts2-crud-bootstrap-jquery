@@ -51,19 +51,19 @@
                                 <td><s:property value="correo" /></td>
                                 <td>
                                     <s:url id="detalleCliente" action="detalleCliente">
-                                        <s:param name="idCliente" value="%{codigo}" />
+                                        <s:param name="idClienteDetalle" value="%{codigo}" />
                                     </s:url>
                                     <s:a href="%{detalleCliente}" cssClass="btn btn-sm btn-default">
                                         <span class="glyphicon glyphicon-option-vertical"></span>
                                     </s:a>
                                     <s:url id="editarCliente" action="editarCliente">
-                                        <s:param name="idCliente" value="%{codigo}" />
+                                        <s:param name="idClienteEditar" value="%{codigo}" />
                                     </s:url>
                                     <s:a href="%{editarCliente}" cssClass="btn btn-sm btn-primary">
                                         <span class="glyphicon glyphicon-edit"></span>
                                     </s:a>
                                     <s:url id="eliminarCliente" action="eliminarCliente">
-                                        <s:param name="idCliente" value="%{codigo}" />
+                                        <s:param name="idClienteEliminar" value="%{codigo}" />
                                     </s:url>
                                     <s:a href="%{eliminarCliente}" cssClass="btn btn-sm btn-danger">
                                         <span class="glyphicon glyphicon-trash"></span>

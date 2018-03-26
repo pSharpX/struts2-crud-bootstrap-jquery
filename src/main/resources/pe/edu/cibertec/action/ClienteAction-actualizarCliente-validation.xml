@@ -2,13 +2,13 @@
 "-//Apache Struts//XWork Validator 1.0.2//EN"
 "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
 <validators>
-    <field name="cliente.nombre">
+    <field name="clienteSeleccionado.nombre">
         <field-validator type="requiredstring">
             <message>Campo Requerido</message>
         </field-validator>
     </field>
     
-    <field name="cliente.apellido">
+    <field name="clienteSeleccionado.apellido">
         <field-validator type="requiredstring">
             <message>Campo Requerido</message>
         </field-validator>
@@ -18,14 +18,14 @@
         </field-validator>
     </field>
     
-    <field name="cliente.numeroMovil">
+    <field name="clienteSeleccionado.numeroMovil">
         <field-validator type="regex">
             <param name="regex">[0-9]*</param>
             <message>Solo ingresar numeros</message>
         </field-validator>
     </field>
     
-    <field name="cliente.correo">
+    <field name="clienteSeleccionado.correo">
         <field-validator type="email">
             <message>Formato Incorrecto</message>
         </field-validator>

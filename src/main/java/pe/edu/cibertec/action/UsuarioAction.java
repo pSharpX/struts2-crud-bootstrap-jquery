@@ -32,9 +32,9 @@ public class UsuarioAction extends ActionSupport{
     }
     
     public String login(){        
-        if("Christian".equals(usuario.getUsername()) 
-                && "123456".equals(usuario.getPassword())){
-            Map session = ActionContext.getContext().getSession();
+        if("Christian".equalsIgnoreCase(usuario.getUsername())
+                && "123456".equalsIgnoreCase(usuario.getPassword())){
+            Map<String, Object> session = ActionContext.getContext().getSession();
             session.put("usuario", this.usuario.getUsername());
             this.addActionMessage(getText("login.ok"));
             return SUCCESS;
