@@ -116,18 +116,18 @@ public class ClienteAction extends ActionSupport implements ServletRequestAware 
     public String eliminar() throws Exception {
         String action = "confirmacion";
         String http_method = this.requet.getMethod();
-        if (HTTP_GET.equals(this.requet.getMethod())) {
+        if (HTTP_GET.equals(http_method)) {
             HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
             String idCliente = request.getParameter("idCliente");
             if ((idCliente == null || "".equals(idCliente))) {
-                return ERROR;
+                return action;
             }
             int clienteCodigo = Integer.parseInt(idCliente);
             this.clienteSeleccionado = dao.obtenerCliente(clienteCodigo);
             if (clienteSeleccionado == null) {
-                return ERROR;
+                return action;
             }
-        } else if (HTTP_POST.equals(this.requet.getMethod())) {
+        } else if (HTTP_POST.equals(http_method)) {
             String errorMessage = dao.eliminarCliente(clienteSeleccionado.getCodigo());
             if (errorMessage != null && !("".equals(errorMessage))) {
                 return ERROR;

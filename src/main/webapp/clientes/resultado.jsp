@@ -15,15 +15,13 @@
     <body>
         <h1>Resultado</h1>
         <h4>Cliente registrado exitosamente!</h4>        
-    
+
         <p><s:text name="nuevo.resultado" /></p>
         <s:if test="cliente.publicidad == true">
             <p><s:text name="nuevo.aviso" /></p>
         </s:if>
-        
-            <s:url action="logout" id="salir" />
-            <s:a href="%{salir}"><s:text name="enlace.logout"/></s:a>
-            
-            <s:debug />
+        <s:url action="logout" id="salir" />
+        <s:a href="%{salir}"><s:text name="enlace.logout"/></s:a>
+        <s:debug />
     </body>
 </html>

@@ -7,20 +7,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
-<s:if test="clienteEliminar == null">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h1 class="panel-title"><s:text name="formulario.titulo.eliminar" /></h1>
-        </div>
-        <div class="panel-body"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><s:text name="formulario.titulo.eliminar" /></h1>
     </div>
-</s:if>
-<s:else>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h1 class="panel-title"><s:text name="formulario.titulo.eliminar" /></h1>
-        </div>
-        <div class="panel-body">
+    <div class="panel-body">
+        <s:if test="clienteSeleccionado == null">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong><s:text name="mensaje.titulo" />!</strong>
+                <s:text name="mensaje.cliente.error" />                        
+            </div>
+        </s:if>
+        <s:else> 
             <s:form action="eliminarCliente" method="post">
                 <s:hidden name="clienteSeleccionado.codigo" />
                 <div class="alert alert-warning alert-dismissible" role="alert">
@@ -31,13 +33,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">                            
-                            <button type="submit" cssClass="btn btn-sm btn-warning">
+                            <button type="submit" class="btn btn-sm btn-danger">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </button>
                         </div>
                     </div>
                 </div>
             </s:form>
-        </div>
+        </s:else>
     </div>
-</s:else>
+</div>
