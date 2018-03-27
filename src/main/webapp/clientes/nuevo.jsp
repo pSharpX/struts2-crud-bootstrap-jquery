@@ -23,7 +23,7 @@
                     <s:textfield name="cliente.nombre" key="formulario.nombre" />
                     <s:textfield name="cliente.apellido" key="formulario.apellido" />
                     <s:radio name="cliente.genero" key="formulario.genero" list="#{'M': 'Masculino', 'F': 'Femenino'}" />
-                    <s:select name="cliente.profesion" key="formulario.profesion" 
+                    <s:select name="cliente.profesion" key="formulario.profesion"
                               list="#{'A1': 'Arquitecto', 'D1': 'Derecho', 'M1': 'Marketing'}"
                               headerKey=""
                               headerValue="----Selecciones"

@@ -90,8 +90,8 @@
             <interceptor-ref name="loginStack"></interceptor-ref>
             <!--<result>/clientes/resultado.jsp</result>
             <result name="input">/clientes/eliminar.jsp</result>-->
-            <result type="tiles">d_eliminarCliente</result>
-            <result name="input" type="tiles">d_eliminarCliente</result>
+            <result type="tiles">d_resultadoCliente</result>
+            <result name="confirmacion" type="tiles">d_eliminarCliente</result>            
         </action>
     </package>    
 </struts>

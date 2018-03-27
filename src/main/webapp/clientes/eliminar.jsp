@@ -21,24 +21,23 @@
             <h1 class="panel-title"><s:text name="formulario.titulo.eliminar" /></h1>
         </div>
         <div class="panel-body">
-            <div class="alert alert-warning alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong><s:text name="formulario.eliminar.title" />!</strong> <s:text name="formulario.eliminar.message" />:
-                <p><strong><s:property value="%{clienteEliminar.nombre}" /> <s:property value="%{clienteEliminar.apellido}" /></strong></p>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <s:url id="eliminarCliente" action="eliminarCliente" escapeAmp="false">                           
-                            <s:param name="idCliente" value="%{codigo}" />
-                            <s:param name="delete" value="true" />
-                        </s:url>
-                        <s:a href="%{eliminarCliente}" cssClass="btn btn-sm btn-warning">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </s:a>
+            <s:form action="eliminarCliente" method="post">
+                <s:hidden name="clienteSeleccionado.codigo" />
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><s:text name="formulario.eliminar.title" />!</strong> <s:text name="formulario.eliminar.message" />:
+                    <p><strong><s:property value="%{clienteSeleccionado.nombre}" /> <s:property value="%{clienteSeleccionado.apellido}" /></strong></p>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">                            
+                            <button type="submit" cssClass="btn btn-sm btn-warning">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </s:form>
         </div>
     </div>
 </s:else>

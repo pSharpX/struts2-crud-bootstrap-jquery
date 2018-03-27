@@ -16,9 +16,13 @@ import java.sql.SQLException;
 public class SqlConecta {
 
     private final String db;
+    private final String username;
+    private final String password;
 
     public SqlConecta() {
         db = "trabajofinal";
+        username = "root";
+        password = "mysql";
     }
 
     public Connection connection() {
@@ -27,7 +31,7 @@ public class SqlConecta {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             cn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/" + db, "root", "123456");
+                    "jdbc:mysql://localhost:3306/" + db, username, password);
             
         } catch (SQLException sqle) {
           sqle.printStackTrace();
