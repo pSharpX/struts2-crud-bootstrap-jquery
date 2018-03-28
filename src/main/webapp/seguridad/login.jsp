@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,13 @@
             .login-container{                
                 margin-top: 50px;
             }
+            
+            input[type="text"] ~ .alert-danger,
+            input[type="password"] ~ .alert-danger{
+                display: none;
+            }
         </style>
+        <sj:head jqueryui="true" jquerytheme="cupertino"/>
         <sb:head />
         <link rel="stylesheet" href="base.css" />
     </head>
@@ -30,7 +37,19 @@
                 <div class="panel-body">
                     <s:form action="login" theme="bootstrap" cssClass="form-horizontal">
                         <s:textfield name="usuario.username" key="formulario.username" />
+                        <div class="form-group">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                                <s:fielderror fieldName="usuario.username" />
+                            </div>
+                        </div>                        
                         <s:password name="usuario.password" key="formulario.password" />
+                        <div class="form-group">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                                <s:fielderror fieldName="usuario.password" />
+                            </div>
+                        </div>                                 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="pull-right">

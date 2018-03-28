@@ -22,7 +22,7 @@ public class SqlConecta {
     public SqlConecta() {
         db = "trabajofinal";
         username = "root";
-        password = "mysql";
+        password = "123456";
     }
 
     public Connection connection() {

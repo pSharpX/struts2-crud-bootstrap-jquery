@@ -40,10 +40,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <tiles:insertAttribute name="menu" />
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-10">
                     <tiles:insertAttribute name="cuerpo" />
                 </div>
             </div>

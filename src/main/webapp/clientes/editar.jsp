@@ -41,10 +41,10 @@
                                  list="#{'M': 'Masculino', 'F': 'Femenino'}" />
                         <s:select name="clienteSeleccionado.profesion" key="formulario.profesion"
                                   list="#{'A1': 'Arquitecto', 'D1': 'Derecho', 'M1': 'Marketing'}"
-                                  headerKey="" headerValue="----Selecciones" value="'S2'" />
+                                  headerKey="" headerValue="----Selecciones" value="clienteSeleccionado.profesion" />
 
                         <s:textfield name="clienteSeleccionado.numeroMovil" key="formulario.numeroMovil" />
-                        <s:select name="clienteSeleccionado.operadorMovil" key="formulario.operadorMovil"
+                        <s:select name="clienteSeleccionado.operadorMovil" value="clienteSeleccionado.operadorMovil" key="formulario.operadorMovil"
                                   list="%{'Operador1'}" headerKey="" headerValue="----Selecciones" />
 
                         <s:checkbox name="clienteSeleccionado.publicidad" key="formulario.publicidad" />
