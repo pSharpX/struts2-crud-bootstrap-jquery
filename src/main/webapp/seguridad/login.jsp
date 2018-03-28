@@ -37,14 +37,14 @@
                 <div class="panel-body">
                     <s:form action="login" theme="bootstrap" cssClass="form-horizontal">
                         <s:textfield name="usuario.username" key="formulario.username" />
-                        <div class="form-group">
+                        <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
                                 <s:fielderror fieldName="usuario.username" />
                             </div>
                         </div>                        
                         <s:password name="usuario.password" key="formulario.password" />
-                        <div class="form-group">
+                        <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
                                 <s:fielderror fieldName="usuario.password" />

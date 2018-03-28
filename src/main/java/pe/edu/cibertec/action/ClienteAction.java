@@ -29,16 +29,17 @@ public class ClienteAction extends ActionSupport implements ServletRequestAware 
     private static final long serialVersionUID = 1L;
 
     private Cliente cliente;
-    private Cliente clienteSeleccionado;
+    private Cliente clienteSeleccionado;    
 
     private HttpServletRequest requet;
     private final String HTTP_POST = "POST";
-    private final String HTTP_GET = "GET";
+    private final String HTTP_GET = "GET";    
 
     @Inject
-    @Named("mysqlDaoCliente")
+    @Named("mockDaoCliente")
     private DaoCliente dao;
-
+    
+    
     public DaoCliente getDao() {
         return dao;
     }
@@ -81,14 +82,14 @@ public class ClienteAction extends ActionSupport implements ServletRequestAware 
         String errorMessage = dao.insertarCliente(this.cliente);
         if (errorMessage != null && !("".equals(errorMessage))) {
             return ERROR;
-        }
+        }        
         return SUCCESS;
     }
 
     public String mostrar() throws Exception {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         int clienteCodigo = Integer.parseInt(request.getParameter("idCliente"));
-        this.clienteSeleccionado = dao.obtenerCliente(clienteCodigo);
+        this.clienteSeleccionado = dao.obtenerCliente(clienteCodigo);        
         return SUCCESS;
     }
 
@@ -98,7 +99,7 @@ public class ClienteAction extends ActionSupport implements ServletRequestAware 
         if (idCliente != null && !"".equals(idCliente)) {
             int clienteCodigo = Integer.parseInt(idCliente);
             this.clienteSeleccionado = dao.obtenerCliente(clienteCodigo);
-        }
+        }         
         return SUCCESS;
     }
 
@@ -109,7 +110,7 @@ public class ClienteAction extends ActionSupport implements ServletRequestAware 
         String errorMessage = dao.modificarCliente(clienteSeleccionado);
         if (errorMessage != null && !("".equals(errorMessage))) {
             return ERROR;
-        }
+        }                
         return SUCCESS;
     }
 
@@ -126,14 +127,14 @@ public class ClienteAction extends ActionSupport implements ServletRequestAware 
             this.clienteSeleccionado = dao.obtenerCliente(clienteCodigo);
             if (clienteSeleccionado == null) {
                 return action;
-            }
+            }            
         } else if (HTTP_POST.equals(http_method)) {
             String errorMessage = dao.eliminarCliente(clienteSeleccionado.getCodigo());
             if (errorMessage != null && !("".equals(errorMessage))) {
                 return ERROR;
-            }
+            }            
             action = SUCCESS;
-        }
+        }        
         return action;
     }
 
