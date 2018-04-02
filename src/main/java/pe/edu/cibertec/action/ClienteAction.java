@@ -36,7 +36,7 @@ public class ClienteAction extends ActionSupport implements ServletRequestAware 
     private final String HTTP_GET = "GET";    
 
     @Inject
-    @Named("mockDaoCliente")
+    @Named("mysqlDaoCliente")
     private DaoCliente dao;
     
     
